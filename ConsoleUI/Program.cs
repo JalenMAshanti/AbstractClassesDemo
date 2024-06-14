@@ -63,13 +63,26 @@ namespace ConsoleUI
              * Using a foreach loop iterate through the list and display each of the properties
              */
 
-            foreach (var vehicle in VehicleLot.vehicles) 
+            foreach (var vehicle in VehicleLot.vehicles.OfType<Car>()) 
             { 
                 Console.WriteLine(vehicle.Model);
                 Console.WriteLine(vehicle.Make);
                 Console.WriteLine(vehicle.Year);
+                Console.WriteLine($"Is it a two seater: {vehicle.IsTwoSeater}");
+                Console.WriteLine($"Is it manual: {vehicle.IsManual}");
                 Console.WriteLine("-----------------");             
                       
+            }
+
+            foreach (var vehicle in VehicleLot.vehicles.OfType<Motorcycle>())
+            {
+                Console.WriteLine(vehicle.Model);
+                Console.WriteLine(vehicle.Make);
+                Console.WriteLine(vehicle.Year);
+                Console.WriteLine($"Does it have Side Cart: {vehicle.HasSideCart}");
+                Console.WriteLine($"Does it have more than 2 wheels: {vehicle.HasThreeWheels}");
+                Console.WriteLine("-----------------");
+
             }
 
             // Call each of the drive methods for one car and one motorcycle
